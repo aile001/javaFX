@@ -43,7 +43,7 @@ public class testController {
     private void openWindow() throws IOException {
         //to do something
         Stage mainStage = new Stage();
-        mainStage.setScene(new Scene(loadfxml("/FxmlViews/Main.fxml").load()));
+        mainStage.setScene(new Scene(loadfxml("/FxmlViews/Ipscan.fxml").load()));
         mainStage.show();
         Window window = txtUsername.getScene().getWindow();
         if(window instanceof Stage){

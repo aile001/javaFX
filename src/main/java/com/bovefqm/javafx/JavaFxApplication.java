@@ -28,6 +28,8 @@ public class JavaFxApplication extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setScene(new Scene(loadfxml("/FxmlViews/test.fxml").load()));
+        primaryStage.setTitle("系统登录");
+
         primaryStage.show();
 
     }
