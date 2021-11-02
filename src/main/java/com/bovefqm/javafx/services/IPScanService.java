@@ -1,5 +1,6 @@
 package com.bovefqm.javafx.services;
 
+import com.bovefqm.javafx.Utils.typeChanges;
 import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 import org.springframework.stereotype.Service;
@@ -9,9 +10,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
-import java.nio.charset.StandardCharsets;
-
-import com.bovefqm.javafx.Utils.*;
 
 @Service
 public class IPScanService {
@@ -24,9 +22,7 @@ public class IPScanService {
 //                        result.appendText("终止扫描！");
 //                        break;
 //                    }
-                    System.out.println(i);
                     String ip = typeChanges.longToIp(i);
-                    System.out.println(ip);
                     try {
                         InetAddress address = InetAddress.getByName(ip);
                         boolean status = address.isReachable(200);

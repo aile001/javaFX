@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.lang.String?>
+
+<AnchorPane prefHeight="480.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bovefqm.javafx.controller.SerialComController">
+   <children>
+      <VBox layoutX="250.0" layoutY="41.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GridPane alignment="CENTER_LEFT" cacheShape="false" centerShape="false" hgap="5.0" prefHeight="178.0" prefWidth="690.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="47.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="79.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Port Name:" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="15.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Baud Rate:" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Data Bit:" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Stop Bit:" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="Parity:" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="HandShaking:" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label text="COM Setting:" GridPane.columnSpan="6">
+                     <GridPane.margin>
+                        <Insets bottom="5.0" left="15.0" right="5.0" top="10.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cmComPort" focusTraversable="false" onAction="#comPortSelect" prefHeight="30.0" prefWidth="100.0" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="cmComBaudRate" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:id="115200" fx:value="115200" />
+                              <String fx:id="57600" fx:value="57600" />
+                              <String fx:id="38400" fx:value="38400" />
+                              <String fx:id="19200" fx:value="19200" />
+                              <String fx:id="9600" fx:value="9600" />
+                              <String fx:id="4800" fx:value="4800" />
+                              <String fx:id="2400" fx:value="2400" />
+                          </FXCollections>
+                      </items>
+                  </ComboBox>
+                  <ComboBox fx:id="cmComDataBit" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:id="DATABITS_8" fx:value="8" />
+                              <String fx:id="DATABITS_7" fx:value="7" />
+                              <String fx:id="DATABITS_6" fx:value="6" />
+                              <String fx:id="DATABITS_5" fx:value="5" />
+                          </FXCollections>
+                      </items>
+                  </ComboBox>
+                  <ComboBox fx:id="cmComStopBit" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:id="STOPBITS_1" fx:constant="CASE_INSENSITIVE_ORDER" fx:value="1" />
+                              <String fx:id="STOPBITS_2" fx:value="2" />
+                              <String fx:id="STOPBITS_1_5" fx:value="1.5" />
+                          </FXCollections>
+                      </items>
+                  </ComboBox>
+                  <ComboBox fx:id="cmComParity" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:id="PARITY_EVEN" fx:value="Even" />
+                              <String fx:id="PARITY_ODD" fx:value="Odd" />
+                              <String fx:id="PARITY_MARK" fx:value="Mark" />
+                              <String fx:id="PARITY_SPACE" fx:value="Space" />
+                          </FXCollections>
+                      </items>
+                  </ComboBox>
+                  <ComboBox fx:id="cmComHandShak" prefHeight="30.0" prefWidth="100.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="5.0" />
+                     </GridPane.margin>
+                      <items>
+                          <FXCollections fx:factory="observableArrayList">
+                              <String fx:id="FLOWCONTROL_NONE" fx:value="None" />
+                          </FXCollections>
+                      </items>
+                  </ComboBox>
+                  <Button fx:id="getCom" mnemonicParsing="false" onAction="#getComAction" prefHeight="50.0" prefWidth="60.0" text="Fresh" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="25.0" top="5.0" />
+                     </GridPane.margin>
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </Button>
+                  <Button fx:id="openCOM" alignment="CENTER" mnemonicParsing="false" onAction="#openComAction" prefHeight="50.0" prefWidth="60.0" text="Open" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="25.0" top="5.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+               <effect>
+                  <ColorAdjust brightness="0.17" contrast="1.0" hue="0.17" saturation="0.54" />
+               </effect>
+            </GridPane>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </Separator>
+            <VBox prefHeight="208.0" prefWidth="700.0">
+               <children>
+                  <GridPane prefHeight="64.0" prefWidth="700.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="401.0" minWidth="10.0" prefWidth="401.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="273.0" minWidth="3.0" prefWidth="78.0" />
+                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="119.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="178.0" minHeight="8.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Received:" textOverrun="CLIP" GridPane.columnSpan="3">
+                           <GridPane.margin>
+                              <Insets left="15.0" top="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <RadioButton mnemonicParsing="false" text="String" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="15.0" top="5.0" />
+                           </GridPane.margin>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Hex" GridPane.columnIndex="2">
+                           <GridPane.margin>
+                              <Insets left="15.0" top="5.0" />
+                           </GridPane.margin>
+                        </RadioButton>
+                        <Button fx:id="txClear" mnemonicParsing="false" onAction="#txClearAtion" prefHeight="30.0" prefWidth="90.0" text="Clear" GridPane.columnIndex="3">
+                           <GridPane.margin>
+                              <Insets left="15.0" right="10.0" top="5.0" />
+                           </GridPane.margin>
+                        </Button>
+                     </children>
+                  </GridPane>
+                  <TextArea fx:id="atResult" prefHeight="179.0" prefWidth="690.0" wrapText="true" />
+               </children>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+            </VBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </Separator>
+            <GridPane>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="177.99999618530273" minWidth="10.0" prefWidth="142.99999618530273" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="155.40000381469724" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="325.0" minWidth="10.0" prefWidth="155.60000000000002" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.20000000000005" minWidth="10.0" prefWidth="139.20000000000005" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="54.0" minHeight="10.0" prefHeight="16.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="54.0" minHeight="6.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="25.0" minHeight="0.0" prefHeight="5.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label prefHeight="22.0" prefWidth="106.0" text="Comander:">
+                     <GridPane.margin>
+                        <Insets left="15.0" top="10.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="atCommand" prefHeight="53.0" prefWidth="276.0" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                     <GridPane.margin>
+                        <Insets top="5.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Button fx:id="btCommand" mnemonicParsing="false" onAction="#btCommandAction" prefHeight="40.0" prefWidth="210.0" text="Send" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="40.0" top="5.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
