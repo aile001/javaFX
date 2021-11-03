@@ -190,12 +190,12 @@
                               <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
-                        <RadioButton mnemonicParsing="false" text="String" GridPane.columnIndex="1">
+                        <RadioButton fx:id="rdString" mnemonicParsing="false" onAction="#rdStringAction" text="String" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="15.0" top="5.0" />
                            </GridPane.margin>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Hex" GridPane.columnIndex="2">
+                        <RadioButton fx:id="rdHex" mnemonicParsing="false" onAction="#rdHexAction" text="Hex" GridPane.columnIndex="2">
                            <GridPane.margin>
                               <Insets left="15.0" top="5.0" />
                            </GridPane.margin>

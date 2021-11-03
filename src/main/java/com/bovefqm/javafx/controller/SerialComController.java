@@ -4,13 +4,9 @@ import com.bovefqm.javafx.SerialComm.SerialPortUtil;
 import com.bovefqm.javafx.services.SendAtCommandService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -26,6 +22,8 @@ public class SerialComController implements Initializable {
     public TextArea atResult;
     public Button openCOM;
     public Button getCom;
+    public RadioButton rdString;
+    public RadioButton rdHex;
     @FXML
     private ComboBox cmComPort;
     @FXML
@@ -42,17 +40,16 @@ public class SerialComController implements Initializable {
     SendAtCommandService atCommandService;
     @Override
     public void initialize(URL url, ResourceBundle rb){
-        if(cmComPort.getSelectionModel().isEmpty()){
-            openCOM.setDisable(true);
-        }else {
-            openCOM.setDisable(false);
-        }
+        openCOM.setDisable(cmComPort.getSelectionModel().isEmpty());
         cmComPort.getSelectionModel().selectFirst();
         cmComBaudRate.getSelectionModel().selectFirst();
         cmComDataBit.getSelectionModel().selectFirst();
         cmComStopBit.getSelectionModel().selectFirst();
         cmComParity.getSelectionModel().selectFirst();
         cmComHandShak.getSelectionModel().selectFirst();
+        ToggleGroup swicher = new ToggleGroup();
+        rdHex.setToggleGroup(swicher);
+        rdString.setToggleGroup(swicher);
     }
 
 
@@ -104,12 +101,21 @@ public class SerialComController implements Initializable {
         }
     }
 
-    public void btCommandAction(ActionEvent actionEvent) {
+    public void btCommandAction() {
+
         String atstr = atCommand.getText();
         atCommandService.sendatcommder(atstr,atResult);
     }
 
-    public void txClearAtion(ActionEvent actionEvent) {
+    public void txClearAtion() {
         atResult.clear();
+    }
+
+    public void rdStringAction() {
+        atCommandService.rdStringHandler(atResult);
+    }
+
+    public void rdHexAction() {
+        atCommandService.rdHexHandler(atResult);
     }
 }

@@ -4,6 +4,7 @@ import com.bovefqm.javafx.SerialComm.SerialPortParameterVO;
 import com.bovefqm.javafx.Utils.typeChanges;
 import gnu.io.*;
 import javafx.application.Platform;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,8 @@ import static com.bovefqm.javafx.SerialComm.SerialPortUtil.*;
 public  class SendAtCommandService  {
     final StringBuilder sb = new StringBuilder();
     public SerialPort comport = null;
-
+    public String hexString =null;
+    public String stringString =null;
 
     public void openComPort(ComboBox porname,ComboBox BaudRate,ComboBox DataBit,ComboBox StopBit,ComboBox Parity){
         String ComName = porname.getSelectionModel().getSelectedItem().toString();
@@ -38,7 +40,11 @@ public  class SendAtCommandService  {
         } catch (NoSuchPortException e) {
             e.printStackTrace();
         } catch (PortInUseException e) {
-            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("串口"+ComName+"被占用");
+            alert.showAndWait();
+            //e.printStackTrace();
+
         } catch (UnsupportedCommOperationException e) {
             e.printStackTrace();
         }
@@ -71,7 +77,10 @@ public  class SendAtCommandService  {
                                 sb1.append((char) bytes1[i]);
                             }
                             String msgTemp=sb1.toString();
+                            textArea.clear();
                             Platform.runLater(()-> textArea.appendText(msgTemp+"\n"+"-----------FINISHIPED-----------"+"\n"));
+                            hexString = sb.toString();
+                            stringString = sb1.toString();
                             sb1.delete(0, sb1.length());
                             sb.delete(0, sb.length());
                             break;
@@ -94,5 +103,19 @@ public  class SendAtCommandService  {
     public void closeComPort(){
         closeSerialPort(comport);
         comport = null;
+    }
+    public void rdStringHandler(TextArea textArea){
+        if(textArea.getText()!=null){ textArea.setText(stringString);
+        }else {
+            textArea.clear();
+        }
+
+
+    }
+    public void rdHexHandler(TextArea textArea ){
+        if(textArea.getText()!=null){ textArea.setText(hexString);
+        }else {
+            textArea.clear();
+        }
     }
 }
